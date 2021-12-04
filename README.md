@@ -17,3 +17,14 @@ The service is external, to get the IP address use the following command
 ```
 minikube service <service-name>
 ```
+
+### Mongo DB deployment
+Create the secret component for mongo db
+```
+kubectl apply -f mongo-secret.yaml
+```
+
+Both deployment and service specifications for mongo db are in the same file
+```
+kubectl apply -f mongo-deployment.yaml
+```
