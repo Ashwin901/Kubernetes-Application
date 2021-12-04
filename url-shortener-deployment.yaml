@@ -22,11 +22,26 @@ spec:
         env:
         - name: PORT
           value: "3000"
-        - name: MONGO_URI
+        - name: MONGO_USER
           valueFrom: 
             secretKeyRef:
               name: url-shortener-secret
-              key: mongo-root-uri
+              key: mongo-root-user
+        - name: MONGO_PASSWORD
+          valueFrom: 
+            secretKeyRef:
+              name: url-shortener-secret
+              key: mongo-root-password
+        - name: MONGO_IP
+          valueFrom: 
+            secretKeyRef:
+              name: url-shortener-secret
+              key: mongo-root-ip
+        - name: MONGO_PORT
+          valueFrom: 
+            secretKeyRef:
+              name: url-shortener-secret
+              key: mongo-root-port
 ---
 apiVersion: v1
 kind: Service

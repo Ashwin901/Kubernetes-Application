@@ -9,10 +9,13 @@ app.use(urlencoded({ extended: true }));
 app.use(express.json());
 
 mongoose
-    .connect(process.env.MONGO_URI, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    })
+    .connect(
+        `mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_IP}:${process.env.MONGO_PORT}/?authSource=admin`,
+        {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        }
+    )
     .then(() => {
         console.log("Connected to mongo db");
     })
@@ -48,4 +51,6 @@ app.get("/:shortId", async (req, res) => {
     res.redirect(data.longUrl);
 });
 
-app.listen(process.env.PORT, () => console.log(`Server is running on Port ${process.env.PORT}`));
+app.listen(process.env.PORT, () =>
+    console.log(`Server is running on Port ${process.env.PORT}`)
+);
