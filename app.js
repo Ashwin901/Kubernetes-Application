@@ -25,7 +25,7 @@ mongoose
     });
 
 app.get("/", (req, res) => {
-    res.send("Welcome");
+    res.send("Hello world!!");
 });
 
 app.get("/url", async (req, res) => {
