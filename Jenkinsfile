@@ -9,9 +9,12 @@ pipeline{
             }
         }
         stage("Test") {
+            agent {
+                docker { image 'node:16.9.0' }
+            }
             steps {
                 echo "Testing"
-                echo "Testing successful"
+                sh "node --version"
             }
         }
         stage("Deploy") {
