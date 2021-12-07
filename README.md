@@ -28,3 +28,15 @@ Both deployment and service specifications for mongo db are in the same file
 ```
 kubectl apply -f mongo-deployment.yaml
 ```
+
+### Persistent volume for Mongo DB
+
+Use the following command to create the persistent volume
+```
+kubectl apply -f mongo-pv.yaml
+```
+
+To create a claim to the persistent volume,
+```
+kubectl apply -f mongo-pv-claim.yaml
+```
