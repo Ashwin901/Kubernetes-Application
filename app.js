@@ -25,17 +25,18 @@ mongoose
     });
 
 app.get("/", (req, res) => {
-    res.send("Hello world!!");
+    res.send("Go to /url");
 });
 
 app.get("/url", async (req, res) => {
     const shortUrls = await ShortUrl.find();
+    console.log("Get Url request");
     res.render("home", { shortUrls: shortUrls });
 });
 
 app.post("/createURL", async (req, res) => {
     await ShortUrl.create({ longUrl: req.body.longUrl });
-
+    console.log("Short Url request");
     res.redirect("/url");
 });
 
