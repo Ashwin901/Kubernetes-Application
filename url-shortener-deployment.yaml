@@ -5,7 +5,7 @@ metadata:
   labels:
     app: url-shortener
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: url-shortener
