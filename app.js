@@ -25,7 +25,7 @@ mongoose
     });
 
 app.get("/", (req, res) => {
-    res.send("Go to /url");
+    res.redirect("/url");
 });
 
 app.get("/url", async (req, res) => {
