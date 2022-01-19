@@ -50,3 +50,11 @@ jobs:
 
     - name: Image digest
       run: echo ${{ steps.docker_build.outputs.digest }}
+
+    - name: Deploy to Heroku
+      uses: akhileshns/heroku-deploy@v3.12.12
+      with:
+        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+        heroku_app_name: "url-shortener-kubernetes" #Must be unique in Heroku
+        heroku_email: "ashwindevelop09@gmail.com"
+        usedocker: true
