@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: url-shortener-deployment
+  namespace: urlshortener
   labels:
     app: url-shortener
 spec:
@@ -47,6 +48,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: url-shortener-service
+  namespace: urlshortener
 spec:
   selector:
     app: url-shortener
