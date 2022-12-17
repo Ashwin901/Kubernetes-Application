@@ -1,42 +1,41 @@
 # URL Shortener
 
-### Secret Component
-Create the secret component first because deployment depends on it
+Create persistent volume for mongodb
+```
+kubectl apply -f mongo-pv.yaml
+```
+
+Create persisitent volume claim
+```
+kubectl apply -f mongo-pv-claim.yaml
+```
+
+Create secret for mongo db
+```
+kubectl apply -f mongo-secret.yaml
+```
+
+Create deployment and service for mongodb
+```
+kubectl apply -f mongo-deployment.yaml
+```
+
+Create secret for url-shortener deployment
 ```
 kubectl apply -f url-shortener-secret.yaml
 ```
-
-### Deployment and Service Component
-Both deployment and service specifications are in the same file
+Create url-shortener deployment and the corresponding service
 ```
 kubectl apply -f url-shortener-deployment.yaml
 ```
 
 ### Access the app in browser
-The service is external, to get the IP address use the following command
+
+Change the service type from ClusterIP to NodePort
 ```
-minikube service <service-name>
+kubectl patch svc url-shortener-service -n urlshortener --type='json' -p '[{"op":"replace","path":"/spec/type","value":"NodePort"}]'
 ```
 
-### Mongo DB deployment
-Create the secret component for mongo db
 ```
-kubectl apply -f mongo-secret.yaml
-```
-
-Both deployment and service specifications for mongo db are in the same file
-```
-kubectl apply -f mongo-deployment.yaml
-```
-
-### Persistent volume for Mongo DB
-
-Use the following command to create the persistent volume
-```
-kubectl apply -f mongo-pv.yaml
-```
-
-To create a claim to the persistent volume,
-```
-kubectl apply -f mongo-pv-claim.yaml
+minikube service url-shortener-service -n urlshortener
 ```
