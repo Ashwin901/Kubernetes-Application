@@ -1,5 +1,18 @@
 # URL Shortener
 
+There are two ways you can deploy this application on your kubernetes cluster
+
+## 1. Using ArgoCD
+Note: ArgoCD should already be deployed on the cluster
+```
+cd argocd-manifests
+kubectl apply -f application.yml
+```
+
+## 2. Manually using kubectl
+```
+cd manifests
+```
 Create persistent volume for mongodb
 ```
 kubectl apply -f mongo-pv.yaml
