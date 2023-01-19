@@ -1,0 +1,21 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: urlshortener-mutating-policy
+spec:
+  validationFailureAction: enforce
+  rules:
+    - name: select-pods
+      match:
+        any:
+          - resources:
+              kinds:
+                - Pod
+              namespaces:
+                - urlshortener
+      mutate:
+        patchStrategicMerge:
+          spec:
+            containers:
+              - (image): "*"
+                imagePullPolicy: "IfNotPresent"
