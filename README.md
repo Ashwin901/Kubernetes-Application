@@ -42,6 +42,11 @@ Create url-shortener deployment and the corresponding service
 kubectl apply -f url-shortener-deployment.yaml
 ```
 
+Apply kyverno policies using 
+```
+kubectl apply -f kyverno-policies/
+```
+
 ### Access the app in browser
 
 Change the service type from ClusterIP to NodePort
