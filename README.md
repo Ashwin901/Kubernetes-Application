@@ -2,52 +2,24 @@
 
 There are two ways you can deploy this application on your kubernetes cluster
 
-## 1. Using ArgoCD
+## 1. Using ArgoCD application manifest
 Note: ArgoCD should already be deployed on the cluster
 ```
 cd argocd-manifests
 kubectl apply -f application.yml
 ```
 
-## 2. Manually using kubectl
+## 2. Using Kubernetes manifests
 ```
-cd manifests
-```
-Create persistent volume for mongodb
-```
-kubectl apply -f mongo-pv.yaml
+kubectl apply -f manifests/
 ```
 
-Create persisitent volume claim
-```
-kubectl apply -f mongo-pv-claim.yaml
-```
-
-Create secret for mongo db
-```
-kubectl apply -f mongo-secret.yaml
-```
-
-Create deployment and service for mongodb
-```
-kubectl apply -f mongo-deployment.yaml
-```
-
-Create secret for url-shortener deployment
-```
-kubectl apply -f url-shortener-secret.yaml
-```
-Create url-shortener deployment and the corresponding service
-```
-kubectl apply -f url-shortener-deployment.yaml
-```
-
-Apply kyverno policies using 
+## 3. Apply kyverno policies using 
 ```
 kubectl apply -f kyverno-policies/
 ```
 
-### Access the app in browser
+## 4. Access the app in browser
 
 Change the service type from ClusterIP to NodePort
 ```
