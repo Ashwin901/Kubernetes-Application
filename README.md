@@ -1,4 +1,4 @@
-# URL Shortener
+# Full Stack Web Application Deployed on a Kubernetes Cluster
 
 There are two ways you can deploy this application on your kubernetes cluster
 
@@ -29,3 +29,6 @@ kubectl patch svc url-shortener-service -n urlshortener --type='json' -p '[{"op"
 ```
 minikube service url-shortener-service -n urlshortener
 ```
+
+## 5. Github Action
+A github action is setup to build and test the image before pushing it to docker hub
