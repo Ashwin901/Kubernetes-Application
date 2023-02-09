@@ -1,4 +1,4 @@
-# Full Stack Web Application Deployed on a Kubernetes Cluster
+# Kubernetes Application
 
 There are two ways you can deploy this application on your kubernetes cluster
 
